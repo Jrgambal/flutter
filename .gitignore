@@ -1,0 +1,8 @@
+.env
+.venv/
+__pycache__/
+reports/
+tasks/inbox/*
+tasks/done/*
+tasks/failed/*
+!tasks/**/.gitkeep
