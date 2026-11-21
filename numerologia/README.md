@@ -9,6 +9,7 @@ App Flutter de numerología basada en el documento *Curso de Numerología: qué 
   - **Ciclos**: Año, Mes y Día Personal, Año Universal (con selector de año), pináculos con edades y etapa actual, y desafíos.
   - **Nombre**: desglose letra por letra, tabla de inclusión, lecciones kármicas, planos de expresión, números puente y comparación con el sistema caldeo.
   - **Lectura**: lectura guiada con el método del curso, formulada como preguntas.
+- **Compatibilidad**: compara dos cartas guardadas. Muestra el número de la relación (suma de los Caminos de Vida), los números núcleo lado a lado con su número puente y su familia (1-5-7, 2-4-8, 3-6-9), el Alma de cada uno frente a la Personalidad del otro, los años personales de ambos y preguntas para conversar. No da puntuaciones ni etiquetas de "incompatible", siguiendo el Módulo 8 del curso.
 - **Números**: arquetipos del 1 al 9 y maestros (luz, sombra, palabra clave), más las deudas kármicas.
 - **Aprender**: los 10 módulos del curso y la evaluación final de 10 preguntas.
 - **Ajustes**: valor de la Ñ (5 o 6) y tratamiento de la Y (consonante, vocal o según el sonido).

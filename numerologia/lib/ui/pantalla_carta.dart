@@ -6,7 +6,7 @@ import '../data/curso.dart';
 import '../data/significados.dart';
 import '../state/app_state.dart';
 import 'formulario_persona.dart';
-import 'pantalla_cartas.dart' show formatoFecha;
+import 'pantalla_cartas.dart' show abrirCompatibilidad, formatoFecha;
 import 'widgets.dart';
 
 class PantallaCarta extends StatelessWidget {
@@ -54,6 +54,11 @@ class PantallaCarta extends StatelessWidget {
             Text(formatoFecha.format(persona.nacimiento), style: Theme.of(context).textTheme.bodySmall),
           ]),
           actions: [
+            IconButton(
+              tooltip: 'Compatibilidad',
+              icon: const Icon(Icons.people_alt_outlined),
+              onPressed: () => abrirCompatibilidad(context, idA: persona.id),
+            ),
             IconButton(tooltip: 'Editar', icon: const Icon(Icons.edit_outlined), onPressed: () => _editar(context, persona)),
             IconButton(tooltip: 'Eliminar', icon: const Icon(Icons.delete_outline), onPressed: () => _eliminar(context, persona)),
           ],

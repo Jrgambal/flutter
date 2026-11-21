@@ -24,4 +24,22 @@ void main() {
     await tester.pumpAndSettle();
     expect(find.textContaining('0.º pináculo'), findsNothing);
   });
+
+  testWidgets('compatibilidad entre dos personas guardadas', (tester) async {
+    SharedPreferences.setMockInitialValues({
+      'flutter.personas': '[{"id":"a","nombre":"Ana María López Ruiz","nacimiento":"1990-07-14"},'
+          '{"id":"b","nombre":"Luis Pérez","nacimiento":"1987-11-29"}]',
+    });
+    await initializeDateFormatting('es');
+    final state = AppState();
+    await state.cargar();
+    await tester.pumpWidget(NumerologiaApp(state: state));
+    await tester.pumpAndSettle();
+
+    await tester.tap(find.byTooltip('Compatibilidad'));
+    await tester.pumpAndSettle();
+
+    expect(find.text('Número de la relación'), findsOneWidget);
+    expect(find.textContaining('4 + 11 = 15 → 6'), findsOneWidget);
+  });
 }

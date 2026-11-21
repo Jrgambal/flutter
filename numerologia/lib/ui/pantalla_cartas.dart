@@ -6,6 +6,7 @@ import '../state/app_state.dart';
 import 'formulario_persona.dart';
 import 'pantalla_ajustes.dart';
 import 'pantalla_carta.dart';
+import 'pantalla_compatibilidad.dart';
 import 'widgets.dart';
 
 final formatoFecha = DateFormat('d MMM y', 'es');
@@ -42,6 +43,11 @@ class PantallaCartas extends StatelessWidget {
         title: const Text('Mis cartas'),
         actions: [
           IconButton(
+            tooltip: 'Compatibilidad',
+            icon: const Icon(Icons.people_alt_outlined),
+            onPressed: () => abrirCompatibilidad(context),
+          ),
+          IconButton(
             tooltip: 'Ajustes de cálculo',
             icon: const Icon(Icons.tune),
             onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const PantallaAjustes())),
@@ -59,12 +65,33 @@ class PantallaCartas extends StatelessWidget {
               ? _Vacio(onNueva: () => _nueva(context), onEjemplo: () => _ejemplo(context))
               : ListView.separated(
                   padding: const EdgeInsets.fromLTRB(16, 8, 16, 96),
-                  itemCount: personas.length,
+                  itemCount: personas.length + 1,
                   separatorBuilder: (_, _) => const SizedBox(height: 12),
-                  itemBuilder: (context, i) => _TarjetaPersona(carta: state.cartaDe(personas[i])),
+                  itemBuilder: (context, i) => i == personas.length
+                      ? FilledButton.tonalIcon(
+                          onPressed: () => abrirCompatibilidad(context),
+                          icon: const Icon(Icons.people_alt_outlined),
+                          label: Text(personas.length < 2
+                              ? 'Compatibilidad (crea otra carta para comparar)'
+                              : 'Comparar compatibilidad entre dos personas'),
+                        )
+                      : _TarjetaPersona(carta: state.cartaDe(personas[i])),
                 ),
     );
   }
+}
+
+void abrirCompatibilidad(BuildContext context, {String? idA}) {
+  final personas = AppScope.of(context).personas;
+  final a = idA ?? (personas.isNotEmpty ? personas[0].id : null);
+  String? b;
+  for (final p in personas) {
+    if (p.id != a) {
+      b = p.id;
+      break;
+    }
+  }
+  Navigator.of(context).push(MaterialPageRoute(builder: (_) => PantallaCompatibilidad(idA: a, idB: b)));
 }
 
 void abrirCarta(BuildContext context, String id) {
