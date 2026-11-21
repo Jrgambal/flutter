@@ -47,6 +47,28 @@ class PantallaAjustes extends StatelessWidget {
             texto: 'Los acentos se ignoran y la fecha se reduce por partes (mes, día y año). Estas variantes '
                 'explican por qué dos numerólogos pueden darle a la misma persona cartas distintas.',
           ),
+          const SizedBox(height: 24),
+          const Divider(),
+          ListTile(
+            contentPadding: EdgeInsets.zero,
+            leading: const Icon(Icons.info_outline),
+            title: const Text('Acerca de Flu y privacidad'),
+            onTap: () => showAboutDialog(
+              context: context,
+              applicationName: 'Flu',
+              applicationVersion: '1.0.0',
+              applicationIcon: const NumeroCirculo('✦', tamano: 48, maestro: true),
+              applicationLegalese: 'Numerología pitagórica, ciclos y compatibilidad, con mirada crítica.',
+              children: const [
+                SizedBox(height: 16),
+                Text('Privacidad: Flu no recoge, envía ni vende tus datos. Los nombres y fechas que escribes se '
+                    'guardan solo en este dispositivo. No hay cuentas, publicidad ni analítica.'),
+                SizedBox(height: 12),
+                Text('La numerología es un sistema simbólico, no una ciencia. Flu es una herramienta de reflexión '
+                    'y entretenimiento, y no reemplaza el consejo profesional.'),
+              ],
+            ),
+          ),
         ],
       ),
     );

@@ -24,7 +24,7 @@ class NumerologiaApp extends StatelessWidget {
     return AppScope(
       state: state,
       child: MaterialApp(
-        title: 'Numerología',
+        title: 'Flu',
         debugShowCheckedModeBanner: false,
         theme: temaClaro,
         darkTheme: temaOscuro,
